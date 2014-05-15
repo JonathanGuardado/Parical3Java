@@ -69,7 +69,7 @@ public class Buscar extends HttpServlet {
                 out.println("<tr><td>Horas</td><td> <input type='text' class='form-control' name='horas' value='"+rs.getString("horas")+"'/></td></tr>");
                 out.println("<tr><td>Pasantias</td><td> <input type='text' class='form-control' name='pasantias' value='"+rs.getString("pasantias")+"'/></td></tr>");    
             }
-            out.println("<input type='button class='btn btn-primary sendBtn' value='Actualizar'/>");
+            
             out.println("</form>");
             out.println("</center>");
             out.println("</body>");

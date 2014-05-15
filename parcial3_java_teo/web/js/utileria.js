@@ -53,6 +53,7 @@ function envioDatos(input) {
             if(url=="Buscar"){
             form=jQuery("#content").find("form");
             jQuery("<input type='button' class='btn btn-primary sendBtn' value='Actualizar'>").appendTo(form);
+            jQuery("<script src='js/utileria.js'></script>").appendTo("#content");
             }
         },
         error: function(e, estado, descripcion) {
