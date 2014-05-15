@@ -58,7 +58,7 @@
    });
 $("#modificar").click(function()
     {
-      $("#content").load("modificar.jsp");
+      $("#content").load("modificarForm.jsp");
       $("#nuevo").removeClass("active");
       $("#borrar").removeClass("active");
       $("#modificar").addClass("active");
