@@ -15,7 +15,7 @@
         <%@page import="java.sql.*" %>
         
         <table class="table" table border="0" cellpadding="5" cellspacing="5">
-            <h2>Datos de Estudiante</h2>
+            
             <%
             String carnet = request.getParameter("carnet");
             Connection conn = null;
@@ -27,9 +27,13 @@
             
             st = conn.createStatement();
             rs = st.executeQuery("select * from alumno where alumno.carnet='"+ carnet +"'");
+            
+                        
             while(rs.next())
             {
+            
             %>
+            <h2>Datos de Estudiante</h2>
             <tr>
                 <th>Carnet: </th>
                 <td><%=  rs.getString("carnet") %></td>
@@ -95,7 +99,7 @@
                 <th>Responsable: </th>
                 <td><%= rs.getString("responsable") %></td>
             </tr>
-            <%
+            <%       
             }
             %>
             </table>
