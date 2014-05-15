@@ -14,8 +14,8 @@
     <body>
         <%@page import="java.sql.*" %>
         
-        <table>
-            <h1>Datos de Estudiante</h1>
+        <table class="table" table border="0" cellpadding="5" cellspacing="5">
+            <h2>Datos de Estudiante</h2>
             <%
             String carnet = request.getParameter("carnet");
             Connection conn = null;
@@ -67,8 +67,8 @@
                 <td><%= rs.getString("email") %></td>
             </tr>
             </table>
-            <table>   
-            <h2>Datos Academicos</h2>
+            <table class="table" table border="0" cellpadding="5" cellspacing="5">   
+            <h3>Datos Academicos</h3>
             <tr>
                 <th>Nota PAES: </th>
                 <td><%= rs.getString("notapaes") %></td>
@@ -86,8 +86,8 @@
             </tr>
             </table>
             
-            <table>
-            <h2>Otros Datos</h2>
+            <table class="table" table border="0" cellpadding="5" padding="5" cellspacing="5">
+            <h3>Otros Datos</h3>
              <tr>
                 <th>Fecha de Nacimiento: </th>
                 <td><%= rs.getString("fecha_nac") %></td>
