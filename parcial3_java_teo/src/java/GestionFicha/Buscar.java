@@ -19,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author watchman
  */
-@WebServlet(name = "Modificar", urlPatterns = {"/Modificar"})
-public class Modificar extends HttpServlet {
+@WebServlet(name = "Bucar", urlPatterns = {"/Buscar"})
+public class Buscar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,6 +43,7 @@ public class Modificar extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<center>");
+            out.println("<form action='actualizar' method='POST'>");
             out.println("<table>");
             String carnet=request.getParameter("carnet");
             Connection conn = null;
@@ -68,6 +69,8 @@ public class Modificar extends HttpServlet {
                 out.println("<tr><td>Horas</td><td> <input type='text' class='form-control' name='horas' value='"+rs.getString("horas")+"'/></td></tr>");
                 out.println("<tr><td>Pasantias</td><td> <input type='text' class='form-control' name='pasantias' value='"+rs.getString("pasantias")+"'/></td></tr>");    
             }
+            out.println("<input type='button class='btn btn-primary sendBtn' value='Actualizar'/>");
+            out.println("</form>");
             out.println("</center>");
             out.println("</body>");
             out.println("</html>");

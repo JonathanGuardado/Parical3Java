@@ -48,7 +48,12 @@ function envioDatos(input) {
         data: data,
         type: 'POST',
         success: function(resp) {
+            
             jQuery("#content").html(resp);
+            if(url=="Buscar"){
+            form=jQuery("#content").find("form");
+            jQuery("<input type='button' class='btn btn-primary sendBtn' value='Actualizar'>").appendTo(form);
+            }
         },
         error: function(e, estado, descripcion) {
             alert(descripcion);

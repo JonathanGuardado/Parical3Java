@@ -15,7 +15,7 @@
     <body>
         <br/>
     <center>
-        <form action="Modificar">
+        <form action="Buscar">
             <input type="text" name="carnet" style="width: 10%" class="form-control"><br/>
             <input type="button" value="Buscar" class="btn btn-primary sendBtn"/>
         </form>
