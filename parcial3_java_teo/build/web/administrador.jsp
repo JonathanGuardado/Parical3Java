@@ -45,7 +45,8 @@
 </div></div> 
          <script src="bootstrap/js/jquery.js"></script>
 	<script src="bootstrap/js/bootstrap.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>    
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="js/jEditable.js"></script>
         <script>
             $("#nuevo").click(function()
     {
@@ -76,7 +77,7 @@ $("#borrar").click(function()
    });
 $("#mostrar").click(function()
     {
-      $("#content").load("show.jsp");
+      $("#content").load("buscar.jsp");
       $("#nuevo").removeClass("active");
       $("#borrar").removeClass("active");
       $("#modificar").removeClass("active");
