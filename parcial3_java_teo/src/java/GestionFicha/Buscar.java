@@ -36,6 +36,7 @@ public class Buscar extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+              String carnet=request.getParameter("carnet");
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -43,9 +44,9 @@ public class Buscar extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<center>");
-            out.println("<form action='actualizar' method='POST'>");
-            out.println("<table>");
-            String carnet=request.getParameter("carnet");
+            out.println("<form action='Actualizar' method='POST'>");
+            out.println("<table>");        
+            out.println("<tr><td>Carnet: </td><td> <input type='text' class='form-control' name='carnet' disabled value='"+carnet+"'/></td></tr>");
             Connection conn = null;
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             conn = DriverManager.getConnection("jdbc:mysql://localhost/parcial3_java", "root", "");

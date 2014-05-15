@@ -42,13 +42,13 @@ function loadAutocomplete(input) {
 function envioDatos(input) {
     form = jQuery(input).parents("form")[0];
     url = jQuery(form).attr("action");
+    jQuery("input[type='text'][name='carnet']").removeAttr("disabled");
     data = jQuery(form).serialize();
     jQuery.ajax({
         url: url,
         data: data,
         type: 'POST',
         success: function(resp) {
-            
             jQuery("#content").html(resp);
             if(url=="Buscar"){
             form=jQuery("#content").find("form");
