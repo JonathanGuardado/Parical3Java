@@ -70,7 +70,7 @@ $("#borrar").click(function()
     {
       $("#content").load("borrar.jsp");
       $("#mostrar").removeClass("active");
-      $("#nuevor").removeClass("active");
+      $("#nuevo").removeClass("active");
       $("#modificar").removeClass("active");
       $("#borrar").addClass("active");
       $("#usuario").removeClass("active");
