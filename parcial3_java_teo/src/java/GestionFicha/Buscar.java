@@ -85,6 +85,20 @@ public class Buscar extends HttpServlet {
                     }
                 }
                 out.println("</select></td></tr>");
+                Statement st3 = null;
+                ResultSet rs3 = null;
+                st3 = conn.createStatement();
+                rs3 = st3.executeQuery("select * from carrera where id_facultad='"+facultadAlumno+"'");
+               
+                out.println("<tr><td>Carrera</td><td> <select class='form-control' name='carrera'>");
+                while (rs3.next()) {
+                    if (rs3.getString("id_carrera") == rs.getString("id_carrera")) {
+                        out.println("<option  selected value='" + rs3.getString("id_carrera") + "' >" + rs3.getString("nombre_carrera") + "</option>");
+                    } else {
+                        out.println("<option value='" + rs3.getString("id_carrera") + "' >" + rs3.getString("nombre_carrera") + "</option>");
+                    }
+                }
+                out.println("</select></td></tr>");
                 out.println("<tr><td>Direccion</td><td> <input type='text' class='form-control' name='direccion' value='" + rs.getString("direccion") + "'/></td></tr>");
                 out.println("<tr><td>Telcasa</td><td> <input type='text' class='form-control' name='telcasa' value='" + rs.getString("telcasa") + "'/></td></tr>");
                 out.println("<tr><td>Teltrabajo</td><td> <input type='text'class='form-control' name='teltrab' value='" + rs.getString("teltrab") + "'/></td></tr>");
