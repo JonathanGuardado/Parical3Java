@@ -63,32 +63,58 @@ public class Buscar extends HttpServlet {
                 out.println("<tr><td>Genero: </td><td><input type='text' class='form-control' name='genero' value='" + rs.getString("genero") + "'/></td></tr>");
                 out.println("<tr><td>Email</td><td> <input type='text' class='form-control' name='email' value='" + rs.getString("email") + "'/></td></tr>");
                 out.println("<tr><td>Responsable</td><td> <input type='text'class='form-control' name='responsable' value='" + rs.getString("responsable") + "'/></td></tr>");
+                Statement stFac = null;
+                ResultSet rsFac = null;
+                stFac = conn.createStatement();
+                String facultadAlumno = "";
+                rsFac = stFac.executeQuery("select * from alumno inner join carrera on carrera.id_carrera=alumno.id_carrera inner join escuela on carrera.id_escuela= escuela.id_escuela "
+                        + "inner join facultad on facultad.id_facultad=escuela.id_facultad"
+                        + " where alumno.carnet='" + carnet + "'");
+                
+                Statement stFF = null;
+                ResultSet rsFF = null;
+                stFF = conn.createStatement();
+                rsFF = stFF.executeQuery("select * from facultad");
+                 while (rsFac.next()) {
+                    facultadAlumno = rsFac.getString("id_facultad");
+                }
+                out.println("<tr><td>Facultad</td><td> <select class='form-control' name='facultad'>");
+                while (rsFF.next()) {
+                    if (rsFF.getString("id_facultad") == facultadAlumno) {
+                        out.println("<option  selected value='" + rsFF.getString("id_facultad") + "' >" + rsFF.getString("nombre_facultad") + "</option>");
+                    } else {
+                        out.println("<option value='" + rsFF.getString("id_facultad") + "' >" + rsFF.getString("nombre_facultad") + "</option>");
+                    }
+                }
+                out.println("</select></td></tr>");
+                         
                 Statement st1 = null;
                 ResultSet rs1 = null;
                 st1 = conn.createStatement();
-                rs1 = st1.executeQuery("select * from alumno inner join carrera on carrera.id_carrera=alumno.id_carrera inner join facultad on carrera.id_facultad= facultad.id_facultad"
+                rs1 = st1.executeQuery("select * from alumno inner join carrera on carrera.id_carrera=alumno.id_carrera inner join escuela on carrera.id_escuela= escuela.id_escuela"
                         + " where alumno.carnet='" + carnet + "'");
                 Statement st2 = null;
                 ResultSet rs2 = null;
                 st2 = conn.createStatement();
-                rs2 = st2.executeQuery("select * from facultad");
-                String facultadAlumno = "";
+                rs2 = st2.executeQuery("select * from escuela where id_facultad='"+facultadAlumno+"'");
+                String escuelaAlumno = "";
+                
                 while (rs1.next()) {
-                    facultadAlumno = rs1.getString("id_facultad");
+                    escuelaAlumno = rs1.getString("id_escuela");
                 }
-                out.println("<tr><td>Facultad</td><td> <select class='form-control' name='facultad'>");
+                out.println("<tr><td>Escuela</td><td> <select class='form-control' name='escuela'>");
                 while (rs2.next()) {
-                    if (rs2.getString("id_facultad") == facultadAlumno) {
-                        out.println("<option  selected value='" + rs2.getString("id_facultad") + "' >" + rs2.getString("nombre_facultad") + "</option>");
+                    if (rs2.getString("id_escuela") == escuelaAlumno) {
+                        out.println("<option  selected value='" + rs2.getString("id_escuela") + "' >" + rs2.getString("nombre_escuela") + "</option>");
                     } else {
-                        out.println("<option value='" + rs2.getString("id_facultad") + "' >" + rs2.getString("nombre_facultad") + "</option>");
+                        out.println("<option value='" + rs2.getString("id_escuela") + "' >" + rs2.getString("nombre_escuela") + "</option>");
                     }
                 }
                 out.println("</select></td></tr>");
                 Statement st3 = null;
                 ResultSet rs3 = null;
                 st3 = conn.createStatement();
-                rs3 = st3.executeQuery("select * from carrera where id_facultad='"+facultadAlumno+"'");
+                rs3 = st3.executeQuery("select * from carrera where id_escuela='"+escuelaAlumno+"'");
                
                 out.println("<tr><td>Carrera</td><td> <select class='form-control' name='carrera'>");
                 while (rs3.next()) {

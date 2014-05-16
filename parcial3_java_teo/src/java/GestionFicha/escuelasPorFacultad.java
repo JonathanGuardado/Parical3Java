@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package GestionFicha;
 
 import java.io.IOException;
@@ -12,14 +13,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.*;
 
 /**
  *
  * @author watchman
  */
-@WebServlet(name = "Actualizar", urlPatterns = {"/Actualizar"})
-public class Actualizar extends HttpServlet {
+@WebServlet(name = "escuelasPorFacultad", urlPatterns = {"/escuelasPorFacultad"})
+public class escuelasPorFacultad extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,47 +35,13 @@ public class Actualizar extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-
-            try {
-                String carnet = request.getParameter("carnet");
-                String nombres = request.getParameter("nombres");
-                String apellidos = request.getParameter("apellidos");
-                String genero = request.getParameter("genero");
-                String email = request.getParameter("email");
-                String responsable = request.getParameter("responsable");
-                String direccion = request.getParameter("direccion");
-                String telcasa = request.getParameter("telcasa");
-                String teltrab = request.getParameter("teltrab");
-                String fecha_nac = request.getParameter("fecha_nac");
-                String tutor = request.getParameter("tutor");
-                Double notapaes = Double.parseDouble(request.getParameter("notapaes"));
-                int horas = Integer.parseInt(request.getParameter("horas"));
-                int pasantias = Integer.parseInt(request.getParameter("pasantias"));
-                 String carrera = request.getParameter("carrera");
-                String escuela = request.getParameter("escuela");
-                String facultad = request.getParameter("facultad");
-                Connection conn = null;
-                Statement st = null;
-                ResultSet rs = null;
-                Class.forName("com.mysql.jdbc.Driver").newInstance();
-                conn = DriverManager.getConnection("jdbc:mysql://localhost/parcial3_java", "root", "");
-                st = conn.createStatement();
-
-              st.executeUpdate("UPDATE `alumno` "
-                        + " SET nombres='" + nombres + "' ,apellidos='" + apellidos + "' ,genero='" + genero + "' ,email='" + email + "' ,responsable='" + responsable + "' ,direccion='" + direccion
-                        + "' ,telcasa='" + telcasa + "' ,teltrab='" + teltrab + "' ,fecha_nac='" + fecha_nac + "'" + " ,tutor='" + tutor + "' ,notapaes=" + notapaes + " ,horas=" + horas + " ,pasantias=" + pasantias 
-                        +" ,carrera='" + carrera + "'" + " ,escuela='" + escuela + "' ,facultad=" + facultad 
-                        + " where " + "carnet='" + carnet + "'");
-            } catch (Exception ex) {
-                System.out.println("Error: "+ex);
-            }
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Actualizar</title>");
+            out.println("<title>Servlet escuelasPorFacultad</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Registro Actualizado</h1>");
+            out.println("<h1>Servlet escuelasPorFacultad at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

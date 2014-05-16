@@ -66,22 +66,39 @@ INSERT INTO `alumno` (`alumno_id`, `id_carrera`, `carnet`, `nombres`, `apellidos
 
 CREATE TABLE IF NOT EXISTS `carrera` (
   `id_carrera` int(11) NOT NULL AUTO_INCREMENT,
-  `id_facultad` int(11) DEFAULT NULL,
+  `id_escuela` int(11) DEFAULT NULL,
   `nombre_carrera` varchar(150) NOT NULL,
   PRIMARY KEY (`id_carrera`),
-  KEY `FK_RELATIONSHIP_17` (`id_facultad`)
+  KEY `FK_RELATIONSHIP_17` (`id_escuela`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `carrera`
 --
 
-INSERT INTO `carrera` (`id_carrera`, `id_facultad`, `nombre_carrera`) VALUES
+INSERT INTO `carrera` (`id_carrera`, `id_escuela`, `nombre_carrera`) VALUES
 (1, 1, 'Ing. Computacion'),
 (2, 2, 'Lic. En Idiomas');
 
 -- --------------------------------------------------------
+--
+-- Estructura de tabla para la tabla `escuela`
+--
 
+CREATE TABLE IF NOT EXISTS `escuela` (
+  `id_escuela` int(11) NOT NULL AUTO_INCREMENT,
+  `id_facultad` int(11) DEFAULT NULL,
+  `nombre_escuela` varchar(150) NOT NULL,
+  PRIMARY KEY (`id_escuela`),
+  KEY `FK_RELATIONSHIP_17` (`id_facultad`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+--
+-- Volcado de datos para la tabla `escuela`
+--
+
+INSERT INTO `escuela` (`id_escuela`, `id_facultad`, `nombre_escuela`) VALUES
+(1,1, 'Computacion'),
+(2,2, 'Idiomas');
 --
 -- Estructura de tabla para la tabla `facultad`
 --
@@ -98,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `facultad` (
 
 INSERT INTO `facultad` (`id_facultad`, `nombre_facultad`) VALUES
 (1, 'Ingenieria'),
-(2, 'Idiomas');
+(2, 'Humanidades');
 
 -- --------------------------------------------------------
 
