@@ -96,6 +96,13 @@
                                                                                                    </select>
         </div>
         </div>
+        <div class="row" style="margin-top: 10px;">
+        <div class="col-lg-3 col-md-3 col-sm-3 hidden-xs"  style="text-align:right"><label>Escuela</label></div>
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12"  style="text-align:left"><select id="escuela" class="form-control" name="escuela" >
+                                                                                   </select>
+          
+        </div>
+        </div>
                 <div class="row" style="margin-top: 10px;">
         <div class="col-lg-3 col-md-3 col-sm-3 hidden-xs"  style="text-align:right"><label>Carrera</label></div>
         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12"  style="text-align:left"><select id="carrera" class="form-control" name="carrera" >
@@ -176,13 +183,26 @@ $( "#facultad" )
     var selectedValue = $(this).find(":selected").val();
     $.ajax({ //Comunicación jQuery hacia JSP
            type: "POST",
-           url: "carrera.jsp",
+           url: "escuela.jsp",
            data: "id="+selectedValue,
            success: function(msg){
-               $("#carrera").html(msg);
+               $("#escuela").html(msg);
+               
+               var selectedValue1 = $("#escuela").find(":selected").val();
+                    $.ajax({ //Comunicación jQuery hacia JSP
+                           type: "POST",
+                           url: "carrera.jsp",
+                           data: "id2="+selectedValue1,
+                           success: function(msg){
+                               $("#carrera").html(msg);
+                           },
+                           error: function(xml,msg){
+                               $("#carrera").text(" Error");
+                           }
+                        });
            },
            error: function(xml,msg){
-               $("#carrera").text(" Error");
+               $("#escuela").text(" Error");
            }
         });  
   })

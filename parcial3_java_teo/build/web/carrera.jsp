@@ -1,7 +1,7 @@
 <%@page import="java.sql.*" %>
 
 <%
-    String id=request.getParameter("id");
+                String id=request.getParameter("id2");
                 Connection conn = null;
                 Statement st=null;
                 ResultSet rs=null;    
@@ -10,7 +10,7 @@
                     Class.forName("com.mysql.jdbc.Driver").newInstance();
                     conn=DriverManager.getConnection("jdbc:mysql://localhost/parcial3_java","root","");
                     st=conn.createStatement();
-                    rs=st.executeQuery("SELECT * FROM `carrera` WHERE `id_facultad`="+id);
+                    rs=st.executeQuery("SELECT * FROM `carrera` WHERE `id_escuela`="+id);
                     while(rs.next())
                     {%>
                             <option value="<%=rs.getString("id_carrera") %>"><%=rs.getString("nombre_carrera") %></option>
