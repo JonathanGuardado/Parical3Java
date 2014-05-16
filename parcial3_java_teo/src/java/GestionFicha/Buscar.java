@@ -68,7 +68,6 @@ public class Buscar extends HttpServlet {
                 stFac = conn.createStatement();
                 String facultadAlumno = "";
                 rsFac = stFac.executeQuery("select * from alumno inner join carrera on carrera.id_carrera=alumno.id_carrera inner join escuela on carrera.id_escuela= escuela.id_escuela "
-                        + "inner join facultad on facultad.id_facultad=escuela.id_facultad"
                         + " where alumno.carnet='" + carnet + "'");
                 
                 Statement stFF = null;
@@ -80,7 +79,7 @@ public class Buscar extends HttpServlet {
                 }
                 out.println("<tr><td>Facultad</td><td> <select class='form-control' name='facultad' onchange='actualizarEsc(this,escuelas)'>");
                 while (rsFF.next()) {
-                    if (rsFF.getString("id_facultad") == facultadAlumno) {
+                    if (rsFF.getString("id_facultad").equals(facultadAlumno)) {
                         out.println("<option  selected value='" + rsFF.getString("id_facultad") + "' >" + rsFF.getString("nombre_facultad") + "</option>");
                     } else {
                         out.println("<option value='" + rsFF.getString("id_facultad") + "' >" + rsFF.getString("nombre_facultad") + "</option>");
@@ -104,7 +103,7 @@ public class Buscar extends HttpServlet {
                 }
                 out.println("<tr><td>Escuela</td><td> <select id='escuelas' onchange='actualizarCarrera(this,carreras)' class='form-control' name='escuela'>");
                 while (rs2.next()) {
-                    if (rs2.getString("id_escuela") == escuelaAlumno) {
+                    if (rs2.getString("id_escuela").equals(escuelaAlumno)) {
                         out.println("<option  selected value='" + rs2.getString("id_escuela") + "' >" + rs2.getString("nombre_escuela") + "</option>");
                     } else {
                         out.println("<option value='" + rs2.getString("id_escuela") + "' >" + rs2.getString("nombre_escuela") + "</option>");
@@ -118,7 +117,7 @@ public class Buscar extends HttpServlet {
                
                 out.println("<tr><td>Carrera</td><td> <select id='carreras' class='form-control' name='carrera'>");
                 while (rs3.next()) {
-                    if (rs3.getString("id_carrera") == rs.getString("id_carrera")) {
+                    if (rs3.getString("id_carrera").equals(rs.getString("id_carrera"))) {
                         out.println("<option  selected value='" + rs3.getString("id_carrera") + "' >" + rs3.getString("nombre_carrera") + "</option>");
                     } else {
                         out.println("<option value='" + rs3.getString("id_carrera") + "' >" + rs3.getString("nombre_carrera") + "</option>");
