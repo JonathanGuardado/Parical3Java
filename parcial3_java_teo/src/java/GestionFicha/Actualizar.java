@@ -64,10 +64,10 @@ public class Actualizar extends HttpServlet {
               st.executeUpdate("UPDATE `alumno` "
                         + " SET nombres='" + nombres + "' ,apellidos='" + apellidos + "' ,genero='" + genero + "' ,email='" + email + "' ,responsable='" + responsable + "' ,direccion='" + direccion
                         + "' ,telcasa='" + telcasa + "' ,teltrab='" + teltrab + "' ,fecha_nac='" + fecha_nac + "'" + " ,tutor='" + tutor + "' ,notapaes=" + notapaes + " ,horas=" + horas + " ,pasantias=" + pasantias 
-                        +" ,carrera='" + carrera + "'" + " ,escuela='" + escuela + "' ,facultad=" + facultad 
+                        +" ,id_carrera=" + carrera 
                         + " where " + "carnet='" + carnet + "'");
             } catch (Exception ex) {
-                System.out.println("Error: "+ex);
+                    System.out.println("Error: "+ex);
             }
             out.println("<!DOCTYPE html>");
             out.println("<html>");

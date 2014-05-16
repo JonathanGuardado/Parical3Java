@@ -78,7 +78,7 @@ public class Buscar extends HttpServlet {
                  while (rsFac.next()) {
                     facultadAlumno = rsFac.getString("id_facultad");
                 }
-                out.println("<tr><td>Facultad</td><td> <select class='form-control' name='facultad'>");
+                out.println("<tr><td>Facultad</td><td> <select class='form-control' name='facultad' onchange='actualizarEsc(this,escuelas)'>");
                 while (rsFF.next()) {
                     if (rsFF.getString("id_facultad") == facultadAlumno) {
                         out.println("<option  selected value='" + rsFF.getString("id_facultad") + "' >" + rsFF.getString("nombre_facultad") + "</option>");
@@ -102,7 +102,7 @@ public class Buscar extends HttpServlet {
                 while (rs1.next()) {
                     escuelaAlumno = rs1.getString("id_escuela");
                 }
-                out.println("<tr><td>Escuela</td><td> <select class='form-control' name='escuela'>");
+                out.println("<tr><td>Escuela</td><td> <select id='escuelas' onchange='actualizarCarrera(this,carreras)' class='form-control' name='escuela'>");
                 while (rs2.next()) {
                     if (rs2.getString("id_escuela") == escuelaAlumno) {
                         out.println("<option  selected value='" + rs2.getString("id_escuela") + "' >" + rs2.getString("nombre_escuela") + "</option>");
@@ -116,7 +116,7 @@ public class Buscar extends HttpServlet {
                 st3 = conn.createStatement();
                 rs3 = st3.executeQuery("select * from carrera where id_escuela='"+escuelaAlumno+"'");
                
-                out.println("<tr><td>Carrera</td><td> <select class='form-control' name='carrera'>");
+                out.println("<tr><td>Carrera</td><td> <select id='carreras' class='form-control' name='carrera'>");
                 while (rs3.next()) {
                     if (rs3.getString("id_carrera") == rs.getString("id_carrera")) {
                         out.println("<option  selected value='" + rs3.getString("id_carrera") + "' >" + rs3.getString("nombre_carrera") + "</option>");

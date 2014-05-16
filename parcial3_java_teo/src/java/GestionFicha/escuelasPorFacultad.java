@@ -8,6 +8,10 @@ package GestionFicha;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,15 +39,23 @@ public class escuelasPorFacultad extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet escuelasPorFacultad</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet escuelasPorFacultad at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            String facultad=request.getParameter("facultad");
+            Connection conn = null;
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/parcial3_java", "root", "");
+            Statement st = null;
+            ResultSet rs = null;
+            st = conn.createStatement();
+            rs = st.executeQuery("select * from escuela where id_facultad='" + facultad + "'");
+            String carreras="";
+            while(rs.next()){
+                  out.println("<option value='"+rs.getString("id_escuela")+"'>"+rs.getString("nombre_escuela")+"</option>");
+                
+            }
+          
+
+        }catch(Exception ex){
+        
         }
     }
 

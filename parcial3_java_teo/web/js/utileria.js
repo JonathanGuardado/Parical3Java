@@ -86,3 +86,29 @@ function InputsEmpty(btnSend) {
     }
     return countInputEmpty;
 }
+function actualizarEsc(select,selectDest){
+    opc=jQuery(select).val();
+    jQuery.ajax({
+        url:"escuelasPorFacultad",
+        type: 'POST',
+        data:"facultad="+opc,
+        success: function(data, textStatus, jqXHR) {
+            jQuery(selectDest).html("");
+            jQuery(data).appendTo(selectDest);
+            jQuery(selectDest).change();
+        }
+    })
+}
+function actualizarCarrera(select,selectDest){
+    opc=jQuery(select).val();
+    jQuery.ajax({
+        url:"carrerasPorEscuela",
+        type: 'POST',
+        data:"escuela="+opc,
+        success: function(data, textStatus, jqXHR) {
+            jQuery(selectDest).html("");
+            jQuery(data).appendTo(selectDest);
+            jQuery(selectDest).change();
+        }
+    })
+}

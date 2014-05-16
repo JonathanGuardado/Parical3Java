@@ -48,7 +48,7 @@ public class carrerasPorEscuela extends HttpServlet {
             rs = st.executeQuery("select * from carrera where id_escuela='" + escuela + "'");
             String carreras="";
             while(rs.next()){
-                  out.println("<option id='"+rs.getString("id_carrera")+"'>");
+                  out.println("<option value='"+rs.getString("id_carrera")+"'>"+rs.getString("nombre_carrera")+"</option>");
                 
             }
           
