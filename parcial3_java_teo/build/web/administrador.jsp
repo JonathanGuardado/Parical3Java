@@ -39,7 +39,7 @@
   <li id="borrar"><a href="#">Borrar Ficha</a></li>
   <li id="mostrar"><a href="#">Buscar Ficha</a></li>
   <li id="usuario"><a href="#">Nuevo Usuario</a></li>
-  <li id="cerrar"><a href="#">Cerrar Session</a></li>
+  <li id="cerrar"><a href="#">Cerrar Sesi&oacute;n <%=session.getAttribute("nombre")%></a></li>
 </ul>
 <div id="content"> <br><br> <center><h2>Bienvenido <%=session.getAttribute("nombre")%></h2></center></div>
 </div></div> 

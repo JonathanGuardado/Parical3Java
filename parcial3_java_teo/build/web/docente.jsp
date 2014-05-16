@@ -32,7 +32,7 @@
 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
 <ul class="nav nav-tabs">
   <li id="buscar" class="active"><a href="#">Buscar</a></li>
-  <li id="cerrar"><a href="#">Cerrar Session</a></li>
+  <li id="cerrar"><a href="#">Cerrar Sesi&oacute;n <%=session.getAttribute("nombre")%></a></li>
 </ul>
     <div id="content"> <br><br> <center><h2>Bienvenido <%=session.getAttribute("nombre")%></h2></center></div>
 </div></div> 
